@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 name: nginx
 services:
   nginx:
@@ -7,12 +7,17 @@ services:
     networks:
       - mynetwork
     volumes:
-      - /var/www/html:/usr/share/nginx/html
+      - nginx-config:/etc/nginx
+      - letsencrypt:/etc/letsencrypt
     ports:
       - 80:80
       - 443:443
-    restart: always
+    restart: unless-stopped
+
+volumes:
+  nginx-config:
+  letsencrypt:
 
 networks:
   mynetwork:
-    external: false
+    external: true
