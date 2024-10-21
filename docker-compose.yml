@@ -10,12 +10,8 @@ services:
       - NET_ADMIN
     environment:
       - VPN_SERVICE_PROVIDER=nordvpn
-      - OPENVPN_USER=$(OPENVPN_USER)
-      - OPENVPN_PASSWORD=$(OPENVPN_PASSWORD)
-      - RADARR_STATIC_CONTAINER_IP=172.20.0.7
-      - SONARR_STATIC_CONTAINER_IP=172.20.0.5
-      - READARR_STATIC_CONTAINER_IP=172.20.0.10
-      - QBITTORRENT_STATIC_CONTAINER_IP=172.20.0.4
+      - OPENVPN_USER=${OPENVPN_USER}
+      - OPENVPN_PASSWORD=${OPENVPN_PASSWORD}
       - SERVER_COUNTRIES=United States
     networks:
       - mynetwork
@@ -64,7 +60,7 @@ services:
     container_name: sonarr
     networks:
       mynetwork:
-        ipv4_address: 172.20.0.5
+        ipv4_address: 172.20.0.15
     environment:
       - PUID=1000
       - PGID=1000
